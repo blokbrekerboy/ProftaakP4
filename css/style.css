@@ -1,0 +1,530 @@
+/* Oldskool Game Styling - Vintage Computer Look */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+body {
+    font-family: 'VT323', 'Courier New', monospace;
+    background: #000000;
+    background-image: 
+        radial-gradient(circle at 20% 20%, #001100 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, #000033 0%, transparent 50%);
+    color: #00ff00;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    overflow: hidden; /* Prevent scrolling */
+    padding: 5px; /* Reduced padding */
+}
+
+/* Add vintage monitor bezel effect */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.05) 2px,
+            rgba(0, 0, 0, 0.05) 4px
+        );
+    pointer-events: none;
+    z-index: 11;
+}
+
+.game-container {
+    text-align: center;
+    padding: 8px;
+    max-width: 95vw;
+    max-height: 98vh;
+    background: 
+        linear-gradient(135deg, #001a00 0%, #000800 50%, #001a00 100%);
+    border: 2px solid #00ff00;
+    border-radius: 0;
+    box-shadow: 
+        0 0 15px rgba(0, 255, 0, 0.3),
+        inset 0 0 15px rgba(0, 255, 0, 0.05);
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+}
+
+/* Simplified vintage panel corners */
+.game-container::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #222222;
+    z-index: -1;
+    border: 1px solid #444444;
+}
+
+header {
+    margin-bottom: 8px;
+}
+
+#game-title {
+    font-size: 2rem;
+    color: #00ff00;
+    text-shadow: 
+        0 0 8px rgba(0, 255, 0, 0.8),
+        0 0 15px rgba(0, 255, 0, 0.4);
+    margin-bottom: 5px;
+    letter-spacing: 3px;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-family: 'VT323', 'Courier New', monospace;
+}
+
+@keyframes textShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.2rem;
+    color: #00ff00;
+    margin-bottom: 8px;
+    font-family: 'VT323', monospace;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #004400;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#gameCanvas {
+    border: 2px solid #00ff00;
+    background: #000000;
+    display: block;
+    margin: 0 auto 8px auto;
+    width: 600px;
+    height: 400px;
+    max-width: 85vw;
+    max-height: 55vh;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.game-controls {
+    margin: 10px 0;
+}
+
+.game-controls button {
+    background: 
+        linear-gradient(145deg, #002200 0%, #004400 50%, #002200 100%);
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    padding: 8px 15px;
+    margin: 0 8px;    border-radius: 0; /* Square corners for retro look */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'VT323', 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.2s ease;
+    
+    /* Old computer button effect */
+    box-shadow: 
+        inset 0 2px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(0, 255, 0, 0.3);
+    
+    /* Vintage button texture */
+    background-image: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 1px,
+            rgba(0, 255, 0, 0.05) 1px,
+            rgba(0, 255, 0, 0.05) 2px
+        );
+}
+
+.game-controls button:hover {
+    background: 
+        linear-gradient(145deg, #003300 0%, #006600 50%, #003300 100%);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+    box-shadow: 
+        inset 0 2px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.6),
+        0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+.game-controls button:active {
+    background: 
+        linear-gradient(145deg, #001100 0%, #002200 50%, #001100 100%);
+    box-shadow: 
+        inset 0 -2px 0 rgba(255, 255, 255, 0.1),
+        inset 0 2px 0 rgba(0, 0, 0, 0.8),
+        0 0 5px rgba(0, 255, 0, 0.3);
+    transform: translateY(1px);
+}
+
+.instructions {
+    margin-top: 10px;
+    padding: 10px;
+    background: 
+        linear-gradient(135deg, rgba(0, 50, 0, 0.8) 0%, rgba(0, 20, 0, 0.9) 100%);
+    border: 2px solid #00aa00;
+    border-radius: 0;
+    border-left: 4px solid #00ff00;
+    font-family: 'VT323', 'Courier New', monospace;
+    
+    /* Old computer terminal panel */
+    box-shadow: 
+        inset 0 0 20px rgba(0, 255, 0, 0.1),
+        0 0 10px rgba(0, 255, 0, 0.2);
+        
+    /* Vintage panel texture */
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 255, 0, 0.03) 2px,
+            rgba(0, 255, 0, 0.03) 4px
+        );
+}
+
+.instructions h3 {
+    color: #00ff00;
+    margin-bottom: 8px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+}
+
+.instructions p {
+    margin: 4px 0;
+    color: #88ff88;
+    font-size: 1rem;
+    line-height: 1.2;
+    text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
+}
+
+/* PowerUp notification styles - Vintage Terminal */
+.powerup-notification {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: 
+        linear-gradient(135deg, rgba(0, 40, 0, 0.95) 0%, rgba(0, 20, 0, 0.98) 100%);
+    border: 3px solid #00ff00;
+    color: #00ff00;
+    padding: 15px 20px;
+    border-radius: 0;
+    font-family: 'VT323', 'Courier New', monospace;
+    font-size: 16px;
+    z-index: 1000;
+    animation: terminalSlideIn 0.5s ease-out;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* Vintage terminal effect */
+    box-shadow: 
+        0 0 20px rgba(0, 255, 0, 0.4),
+        inset 0 0 20px rgba(0, 255, 0, 0.1);
+        
+    /* Terminal text glow */
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+}
+
+@keyframes terminalSlideIn {
+    from {
+        transform: translateX(100%) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Pixelated text effect */
+.pixelated-text {
+    font-family: 'Courier New', monospace;
+    text-rendering: optimizeSpeed;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+/* Retro scan lines effect */
+.game-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(
+            transparent 0%,
+            rgba(0, 255, 0, 0.03) 50%,
+            transparent 100%
+        );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Retro glow effect */
+@keyframes glow {
+    from { text-shadow: 0 0 10px rgba(0, 255, 0, 0.8); }
+    to { text-shadow: 0 0 20px rgba(0, 255, 0, 1), 0 0 30px rgba(0, 255, 0, 1); }
+}
+
+#game-title {
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Vintage Computer Terminal Header */
+.terminal-header {
+    background: #000000;
+    border: 2px solid #004400;
+    padding: 5px 10px;
+    margin-bottom: 8px;
+    font-family: 'VT323', 'Courier New', monospace;
+    text-align: left;
+    border-radius: 0;
+    
+    box-shadow: 
+        inset 0 0 10px rgba(0, 255, 0, 0.2),
+        0 0 5px rgba(0, 255, 0, 0.3);
+}
+
+.terminal-prompt {
+    color: #00aa00;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+.terminal-prompt::after {
+    content: "_";
+    animation: terminalBlink 1s infinite;
+    color: #00ff00;
+}
+
+@keyframes terminalBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Upgrade Legend Styling */
+.upgrade-legend {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 2px solid #004400;
+}
+
+.upgrade-legend p {
+    margin: 3px 0;
+    font-size: 0.9rem;
+}
+
+.upgrade-speed { color: #00ffff; text-shadow: 0 0 5px #00ffff; }
+.upgrade-fire { color: #ff8800; text-shadow: 0 0 5px #ff8800; }
+.upgrade-health { color: #ff0080; text-shadow: 0 0 5px #ff0080; }
+.upgrade-shield { color: #8800ff; text-shadow: 0 0 5px #8800ff; }
+.upgrade-multi { color: #ffff00; text-shadow: 0 0 5px #ffff00; }
+.upgrade-diagonal { color: #ff00ff; text-shadow: 0 0 5px #ff00ff; }
+.upgrade-bounce { color: #00ffff; text-shadow: 0 0 5px #00ffff; }
+.upgrade-bomb { color: #ff4400; text-shadow: 0 0 5px #ff4400; }
+
+/* Responsive design */
+@media (max-width: 900px) {
+    #gameCanvas {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+    }
+    
+    .game-container {
+        margin: 5px;
+        padding: 8px;
+    }
+    
+    #game-title {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+    }
+    
+    .game-controls button {
+        padding: 6px 10px;
+        margin: 0 5px;
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+    
+    .instructions p {
+        font-size: 0.9rem;
+    }
+    
+    .upgrade-legend p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 2px;
+    }
+    
+    .game-container {
+        padding: 5px;
+    }
+    
+    #game-title {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .score-board {
+        font-size: 1rem;
+        padding: 3px 8px;
+    }
+    
+    .instructions {
+        padding: 8px;
+    }
+    
+    .instructions h3 {
+        font-size: 1.1rem;
+    }
+    
+    .instructions p {
+        font-size: 0.8rem;
+        margin: 2px 0;
+    }
+}
+
+/* Additional Retro Effects */
+
+/* Old CRT Monitor Scanlines */
+.game-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.1) 2px,
+            rgba(0, 0, 0, 0.1) 4px
+        );
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* Vintage Computer Labels */
+.game-container::after {
+    content: "COMMODORE-64 COMPATIBLE • 1985 RETRO EDITION";
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'VT323', monospace;
+    font-size: 0.8rem;
+    color: #666666;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Power LED Indicator */
+.power-led {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 10px;
+    height: 10px;
+    background: #ff0000;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 10px #ff0000,
+        inset 0 0 3px rgba(255, 255, 255, 0.3);
+    animation: powerLedBlink 2s ease-in-out infinite;
+    z-index: 10;
+}
+
+@keyframes powerLedBlink {
+    0%, 90% { opacity: 1; }
+    95% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Vintage Computer Ventilation Grilles */
+.ventilation-grille {
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 80%;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            #333333,
+            #333333 3px,
+            #555555 3px,
+            #555555 6px
+        );
+    border-radius: 0 5px 5px 0;
+}
+
+.ventilation-grille::before {
+    content: "";
+    position: absolute;
+    left: -15px;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            #333333,
+            #333333 3px,
+            #555555 3px,
+            #555555 6px
+        );
+    border-radius: 5px 0 0 5px;
+}

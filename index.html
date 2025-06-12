@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oldskool Game - [Voer je game titel hier in]</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>    <div class="game-container">
+        <!-- Power LED and vintage elements -->
+        <div class="power-led"></div>
+        
+        <!-- Vintage Computer Terminal Header -->
+        <div class="terminal-header">
+            <span class="terminal-prompt">C:\GAMES\OLDSKOOL> RUN GAME.EXE</span>
+        </div>
+        
+        <header>
+            <h1 id="game-title">>>> OLDSKOOL GAME <<<</h1>
+            <div class="score-board">
+                <span>SCORE: <span id="score">000000</span></span>
+                <span>LEVEL: <span id="level">01</span></span>
+            </div>
+        </header>
+          <main>
+            <canvas id="gameCanvas" width="600" height="400"></canvas>
+              <div class="game-controls">
+                <button id="startBtn">START</button>
+                <button id="pauseBtn">PAUSE</button>
+                <button id="resetBtn">RESET</button>
+            </div>
+            
+            <div class="instructions">
+                <h3>>>> SYSTEM INSTRUCTIONS <<<</h3>
+                <p>ARROW KEYS: NAVIGATE VESSEL</p>
+                <p>SPACEBAR: FIRE WEAPONS</p>
+                <p>COLLECT UPGRADES FOR PERMANENT ENHANCEMENTS</p>
+                <div class="upgrade-legend">
+                    <p>>>> UPGRADE TYPES <<<</p>
+                    <p><span class="upgrade-speed">[>]</span> SPEED BOOST</p>
+                    <p><span class="upgrade-fire">[*]</span> RAPID FIRE</p>
+                    <p><span class="upgrade-health">[+]</span> HEALTH BOOST</p>                    <p><span class="upgrade-shield">[O]</span> ARMOR UPGRADE</p>                    <p><span class="upgrade-multi">[#]</span> MULTI-SHOT</p>                    <p><span class="upgrade-diagonal">[/]</span> DIAGONAL SHOT</p>
+                    <p><span class="upgrade-bounce">[~]</span> BOUNCE SHOT (BOSS FAST ONLY!)</p>
+                    <p><span class="upgrade-bomb">[X]</span> SCREEN CLEAR</p>
+                </div>
+            </div>
+        </main>
+    </div>
+      <!-- Game Scripts -->
+    <script src="js/game.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/enemy.js"></script>
+    <script src="js/powerup.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
